@@ -1,61 +1,56 @@
-import styled, { keyframes } from 'styled-components';
+import React, { useEffect, useState } from 'react';
 
-const spin = keyframes`
-  0%, 100% { transform: rotate(0); }
-  25% { transform: rotate(90deg); }
-  50% { transform: rotate(180deg); }
-  75% { transform: rotate(270deg); }
-`;
-
-const bounce = keyframes`
-  0%, 100%, 20%, 50%, 80% {
-    transform: translateY(0);
-  }
-  40% {
-    transform: translateY(-30px);
-  }
-  60% {
-    transform: translateY(-15px);
-  }
-`;
-
-export const Loader = () => {
-  return (
-    <StyledLoader>
-      <Circle color="#e50914" />
-      <Circle color="#1e90ff" />
-      <Circle color="#ff6347" />
-      <Circle color="#32cd32" />
-      <Circle color="#9400d3" />
-      <Circle color="#ff4500" />
-    </StyledLoader>
-  );
+const loaderStyles = {
+  position: 'absolute',
+  left: '50%',
+  top: '50%',
+  zIndex: 1,
+  width: '120px',
+  height: '120px',
+  margin: '-76px 0 0 -76px',
+  border: '16px solid #f3f3f3',
+  borderRadius: '50%',
+  borderTop: '16px solid #3498db',
+  WebkitAnimation: 'spin 2s linear infinite',
+  animation: 'spin 2s linear infinite',
 };
 
-const StyledLoader = styled.div`
-  position: fixed;
-  top: 30%;
-  left: 40%;
-  display: inline-block;
-`;
+const contentStyles = {
+  display: 'none',
+  textAlign: 'center',
+};
 
-const Circle = styled.div`
-  width: 20px;
-  height: 20px;
-  background-color: ${props => props.color};
-  border-radius: 50%;
-  display: inline-block;
-  animation: ${spin} 2.2s cubic-bezier(4.5, 0, 0.5, 1) infinite, ${bounce} 2s ease-in-out infinite;
+const animateBottomStyles = {
+  position: 'relative',
+  WebkitAnimationName: 'animatebottom',
+  WebkitAnimationDuration: '1s',
+  animationName: 'animatebottom',
+  animationDuration: '1s',
+};
 
-  &:nth-child(1) {
-    animation-delay: -2.45s;
-  }
+function Loader() {
+  const [loading, setLoading] = useState(true);
 
-  &:nth-child(2) {
-    animation-delay: -2.3s;
-  }
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      setLoading(false);
+    }, 3000);
 
-  &:nth-child(3) {
-    animation-delay: -2.15s;
-  }
-`;
+    return () => clearTimeout(timeout);
+  }, []);
+
+  return (
+    <div className="loader-container">
+      {loading ? (
+        <div style={loaderStyles}></div>
+      ) : (
+        <div style={{ ...contentStyles, ...animateBottomStyles }}>
+          <h2>Tada!</h2>
+          <p>Some text in my newly loaded page..</p>
+        </div>
+      )}
+    </div>
+  );
+}
+
+export default Loader;

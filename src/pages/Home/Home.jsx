@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { fetchHomePage } from '../../configAPI';
 import MoviesList from 'components/MoviesList/MoviesList';
 import { PulsarTitle } from './Home.styled';
-import { Loader } from 'components/Loader/Loader';
+import Loader from 'components/Loader/Loader';
 
 const Home = () => {
   const [movies, setMovies] = useState([]);

@@ -7,7 +7,7 @@ import {
   CastList,
   CastWrapper
 } from './Cast.styled';
-import { Loader } from 'components/Loader/Loader';
+import Loader from 'components/Loader/Loader';
 import { animateScroll } from 'react-scroll';
 import image2 from '.././images/image2.png';
 

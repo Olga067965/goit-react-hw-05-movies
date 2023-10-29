@@ -1,7 +1,7 @@
 import { useEffect, useState, useRef, Suspense } from 'react';
 import { Outlet, useParams, useLocation } from 'react-router-dom';
 import { fetchSearchDetail } from '../../configAPI';
-import { Loader } from 'components/Loader/Loader';
+import Loader from 'components/Loader/Loader';
 import { BsCaretLeftFill } from 'react-icons/bs';
 import image1 from 'components/images/image1.png';
 import {

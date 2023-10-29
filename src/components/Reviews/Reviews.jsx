@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { fetchSearchReviews } from 'configAPI';
 import { ReviewsWrapper, InfoBlock, InfoWrapper } from './Reviews.styled';
-import { Loader } from 'components/Loader/Loader';
+import Loader from 'components/Loader/Loader';
 import { animateScroll } from 'react-scroll';
 
 const Reviews = () => {

@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Loader } from 'components/Loader/Loader';
+import Loader from 'components/Loader/Loader';
 import { fetchSearchMovie } from 'configAPI';
 import MoviesList from 'components/MoviesList/MoviesList';
 import SearchForm from 'components/SearchMovies/SearchMovies';
